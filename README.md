@@ -4,7 +4,7 @@
 
 Automatically throws snowballs in The Legend of Zelda: Breath of the Wild by emulating a controller on a Arduino UNO R3.
 
-
+https://www.arduino.cc/en/Hacking/DFUProgramming8U2
 
 ** Original README below **
 
