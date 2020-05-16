@@ -6,7 +6,7 @@ Automatically throws snowballs in The Legend of Zelda: Breath of the Wild by emu
 
 
 
-** Original README blow **
+** Original README below **
 
 ----
 
