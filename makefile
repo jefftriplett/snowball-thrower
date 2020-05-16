@@ -42,6 +42,8 @@ with-alert: all
 with-alert: CC_FLAGS += -DALERT_WHEN_DONE
 
 flash:
-	sudo dfu-programmer atmega16u2 erase
+	sudo dfu-programmer atmega16u2 erase --force
+	sleep 0.5
 	sudo dfu-programmer atmega16u2 flash Joystick.hex
+	sleep 0.5
 	sudo dfu-programmer atmega16u2 reset
