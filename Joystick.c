@@ -39,7 +39,7 @@ typedef enum {
 typedef struct {
 	Buttons_t button;
 	uint16_t duration;
-} command; 
+} command;
 
 static const command step[] = {
 	// Setup controller
@@ -63,7 +63,7 @@ static const command step[] = {
 	{ A,          5 }, // <- OK!
 	{ NOTHING,   15 },
 	{ B,          5 },
-	{ NOTHING,   20 }, // Aha! Play bells are ringing! I gotta set up the pins, but I'll be back in a flurry
+	{ NOTHING,   29 }, // Aha! Play bells are ringing! I gotta set up the pins, but I'll be back in a flurry
 	{ A,          5 }, // <Continue>
 	{ NOTHING,  325 }, // Cut to different scene (Knock 'em flat!)
 	{ B,          5 },
@@ -79,7 +79,7 @@ static const command step[] = {
 	{ A,          5 }, // <Continue>
 	{ NOTHING,  100 }, // Well, good luck
 	{ A,          5 }, // <Continue>
-	{ NOTHING,  150 }, // Pondo walks away
+	{ NOTHING,  200 }, // Pondo walks away
 
 	// Pick up Snowball (Or alternatively, run to bail in case of a non-strike)
 	{ A,          5 },
@@ -98,11 +98,10 @@ static const command step[] = {
 	{ NOTHING,   20 },
 	{ B,          5 },
 	{ NOTHING,  450 },
+
 	{ B,          5 }, // Snowly moly... there are rules!
 	{ NOTHING,   20 },
 	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 }, // Second dialogue
 	{ NOTHING,   20 },
 	{ DOWN,      10 }, // Return to snowball
 	{ NOTHING,   20 },
@@ -112,78 +111,78 @@ static const command step[] = {
 	{ THROW,     25 },
 
 	// Back at main flow
-	{ NOTHING,  175 }, // Ater throw wait
+	{ NOTHING,  175 }, // Ater throw waitw
 	{ B,          5 },
 	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 }, // To the rewards
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	
-	{ B,          5 }, // Wait for 450 cycles by bashing B (Like real players do!)
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 } // Saving, intermission
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 }, // To the rewards
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+
+	// { B,          5 }, // Wait for 450 cycles by bashing B (Like real players do!)
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 } // Saving, intermission
 };
 
 // Main entry point.
@@ -395,19 +394,19 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData) {
 			{
 
 				case UP:
-					ReportData->LY = STICK_MIN;				
+					ReportData->LY = STICK_MIN;
 					break;
 
 				case LEFT:
-					ReportData->LX = STICK_MIN;				
+					ReportData->LX = STICK_MIN;
 					break;
 
 				case DOWN:
-					ReportData->LY = STICK_MAX;				
+					ReportData->LY = STICK_MAX;
 					break;
 
 				case RIGHT:
-					ReportData->LX = STICK_MAX;				
+					ReportData->LX = STICK_MAX;
 					break;
 
 				case A:
@@ -423,7 +422,7 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData) {
 					break;
 
 				case THROW:
-					ReportData->LY = STICK_MIN;				
+					ReportData->LY = STICK_MIN;
 					ReportData->Button |= SWITCH_R;
 					break;
 
@@ -445,7 +444,7 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData) {
 			if (duration_count > step[bufindex].duration)
 			{
 				bufindex++;
-				duration_count = 0;				
+				duration_count = 0;
 			}
 
 
