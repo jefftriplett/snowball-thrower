@@ -21,19 +21,30 @@ these buttons for our use.
 #include "Joystick.h"
 
 typedef enum {
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT,
+	L_UP,
+	L_DOWN,
+	L_LEFT,
+	L_RIGHT,
+	R_UP,
+	R_DOWN,
+	R_LEFT,
+	R_RIGHT,
 	X,
 	Y,
 	A,
 	B,
 	L,
 	R,
+	ZL,
+	ZR,
+	MINUS,
+    PLUS,
 	THROW,
-	NOTHING,
+	SUSPEND,
+	SYNC,
+    NOTHING,
 	TRIGGERS
+
 } Buttons_t;
 
 typedef struct {
@@ -84,36 +95,68 @@ static const command step[] = {
 	// Pick up Snowball (Or alternatively, run to bail in case of a non-strike)
 	{ A,          5 },
 	{ NOTHING,   50 },
-	{ LEFT,      42 },
-	{ UP,        80 },
+	{ L_LEFT,    42 },
+	{ L_UP,      80 },
 	{ THROW,     25 },
 
 	// Non-strike alternative flow, cancel bail and rethrow
-	{ NOTHING,   30 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 }, // I have to split dialogue (It's nothing)
-	{ NOTHING,   15 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,  450 },
+	// { NOTHING,   30 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 }, // I have to split dialogue (It's nothing)
+	// { NOTHING,   15 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,  450 },
 
-	{ B,          5 }, // Snowly moly... there are rules!
-	{ NOTHING,   20 },
-	{ B,          5 },
-	{ NOTHING,   20 },
-	{ DOWN,      10 }, // Return to snowball
-	{ NOTHING,   20 },
-	{ A,          5 }, // Pick up snowball, we just aimlessly throw it
-	{ NOTHING,   50 },
-	{ UP,        10 },
-	{ THROW,     25 },
+	// { B,          5 }, // Snowly moly... there are rules!
+	// { NOTHING,   20 },
+	// { B,          5 },
+	// { NOTHING,   20 },
+	// { DOWN,      10 }, // Return to snowball
+	// { NOTHING,   20 },
+	// { A,          5 }, // Pick up snowball, we just aimlessly throw it
+	// { NOTHING,   50 },
+	// { L_UP,      10 },
+	// { THROW,     25 },
 
 	// Back at main flow
-	{ NOTHING,  175 }, // Ater throw waitw
+	{ NOTHING,  500 }, // Ater throw wait
+
 	{ B,          5 },
 	{ NOTHING,   20 },
+	{ B,          5 },
+	{ NOTHING,   20 },
+	{ B,          5 },
+	{ NOTHING,   20 },
+	{ B,          5 },
+	{ NOTHING,  200 },
+
+	{ B,          5 },
+	{ NOTHING,   20 },
+	{ B,          5 },
+	{ NOTHING,  200 },
+
+	{ B,          5 },
+	{ NOTHING,   20 },
+	{ B,          5 },
+	{ NOTHING,   20 },
+	{ B,          5 },
+	{ NOTHING,  200 },
+
+	{ B,          5 },
+	{ NOTHING,   20 },
+	{ B,          5 },
+	{ NOTHING,   20 },
+	{ B,          5 },
+	{ NOTHING,   20 },
+	{ B,          5 },
+	{ NOTHING,  200 },
+
+	// Restart conversation
+	{ A,          5 },
+	{ NOTHING,   100},
 	// { B,          5 },
 	// { NOTHING,   20 },
 	// { B,          5 },
@@ -393,20 +436,36 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData) {
 			switch (step[bufindex].button)
 			{
 
-				case UP:
+				case L_UP:
 					ReportData->LY = STICK_MIN;
 					break;
 
-				case LEFT:
+				case L_LEFT:
 					ReportData->LX = STICK_MIN;
 					break;
 
-				case DOWN:
+				case L_DOWN:
 					ReportData->LY = STICK_MAX;
 					break;
 
-				case RIGHT:
+				case L_RIGHT:
 					ReportData->LX = STICK_MAX;
+					break;
+
+				case R_UP:
+					ReportData->RY = STICK_MIN;
+					break;
+
+				case R_DOWN:
+					ReportData->RY = STICK_MAX;
+					break;
+
+				case R_LEFT:
+					ReportData->RX = STICK_MIN;
+					break;
+
+				case R_RIGHT:
+					ReportData->RX = STICK_MAX;
 					break;
 
 				case A:
@@ -417,9 +476,35 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData) {
 					ReportData->Button |= SWITCH_B;
 					break;
 
+				case Y:
+					ReportData->Button |= SWITCH_Y;
+					break;
+
+				case X:
+					ReportData->Button |= SWITCH_X;
+					break;
+
+				case L:
+					ReportData->Button |= SWITCH_L;
+					break;
+
 				case R:
 					ReportData->Button |= SWITCH_R;
 					break;
+
+				case ZL:
+					ReportData->Button |= SWITCH_ZL;
+					break;
+
+				case ZR:
+					ReportData->Button |= SWITCH_ZR;
+					break;
+
+				case MINUS:
+					ReportData->Button |= SWITCH_MINUS;
+
+                case PLUS:
+                    ReportData->Button |= SWITCH_PLUS;
 
 				case THROW:
 					ReportData->LY = STICK_MIN;
@@ -427,6 +512,14 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData) {
 					break;
 
 				case TRIGGERS:
+					ReportData->Button |= SWITCH_L | SWITCH_R;
+					break;
+
+				case SUSPEND:
+					ReportData->Button |= SWITCH_ZL | SWITCH_ZR;
+					break;
+
+				case SYNC:
 					ReportData->Button |= SWITCH_L | SWITCH_R;
 					break;
 
