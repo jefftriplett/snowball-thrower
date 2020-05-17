@@ -56,11 +56,11 @@ static const command step[] = {
 	// Setup controller
 	{ NOTHING,  250 },
 	{ TRIGGERS,   5 },
-	{ NOTHING,  150 },
+	{ NOTHING,  100 },
 	{ TRIGGERS,   5 },
-	{ NOTHING,  150 },
+	{ NOTHING,  100 },
 	{ A,          5 },
-	{ NOTHING,  250 },
+	{ NOTHING,   50 },
 
 	// Talk to Pondo
 	{ A,          5 }, // Start
@@ -156,7 +156,7 @@ static const command step[] = {
 
 	// Restart conversation
 	{ A,          5 },
-	{ NOTHING,   100},
+	{ NOTHING,  100 },
 	// { B,          5 },
 	// { NOTHING,   20 },
 	// { B,          5 },
